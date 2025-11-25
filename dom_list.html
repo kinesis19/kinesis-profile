@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 2: 댓글 추가/삭제</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #25d29b;
+            margin: 5px 0;
+            padding: 10px;      
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #ffdddd;
+        }
+        /* 클릭 시 삭제 안내 툴팁 효과 */
+        li:hover::after {
+            content: " (클릭하면 삭제)";
+            color: red;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // 댓글 추가 함수
+        function addComment() {
+            // 사용자로부터 입력 받기
+            var inputStr = prompt("추가할 댓글 내용을 입력하세요:", "오늘 수업 너무 재밌어요!");
+
+            // 취소 버튼을 누르거나 내용이 없으면 종료하는 예외처리
+            if (inputStr == null || inputStr.trim() == "") {
+                return; 
+            }
+
+            // 부모 요소(ul) 찾기
+            var parent = document.getElementById("commentList");
+
+            // 새로운 요소(li) 생성 및 내용 채우기
+            var newLi = document.createElement("li");
+            newLi.innerHTML = inputStr;
+
+            // 클릭 시 삭제되는 이벤트 리스너 등록 (핵심!)
+            newLi.onclick = function() {
+                var p = this.parentElement;
+                p.removeChild(this);
+            };
+
+            // 트리에 추가 (Append)
+            parent.appendChild(newLi);
+        }
+    </script>
+</head>
+<body onload="addComment()"> 
+
+    <h3>실습 2: 댓글 추가/삭제 프로그램</h3>
+    <p>아래 목록을 클릭하면 해당 항목이 삭제됩니다.</p>
+    <hr>
+
+    <button onclick="addComment()">+ 댓글 추가하기</button>
+
+    <!-- 댓글이 들어갈 목록 -->
+    <ul id="commentList">
+        <!-- 초기 댓글 항목들 -->
+        <li>오늘 수업 너무 재밌어요!</li>
+        <li>자바스크립트는 정말 유용한 언어인 것 같아요.</li>
+        <li>DOM 조작이 생각보다 간단하네요!</li>
+        <li>더 많은 예제를 통해 실력을 키우고 싶어요.</li>
+    </ul>
+
+</body>
+</html>
