@@ -32,6 +32,16 @@
         var y = 100;
         var step = 10; // 이동 거리
 
+        // 경계 색상 업데이트 함수
+        function updateRobotColor(robot) {
+            var isAtBoundary = (x <= 10 || x >= 1820 || y <= 100 || y >= 820);
+            if (isAtBoundary) {
+                robot.style.backgroundColor = "#FF6B6B"; // 빨간색 (경계 도달)
+            } else {
+                robot.style.backgroundColor = "#95E1D3"; // 기본 색상
+            }
+        }
+
         window.onload = function() {
             var robot = document.getElementById("robot");
             var info = document.getElementById("info");
@@ -39,23 +49,34 @@
             document.onkeydown = function(e) {
                 // 37:왼쪽, 38:위, 39:오른쪽, 40:아래
                 switch(e.keyCode) {
-                    case 37: // [왼쪽] 제한 없이 이동
-                        x -= step;
+                    case 37: // [왼쪽] 이동
+                        if (x - step > 0) {
+                            x -= step;
+                        }
                         break;
-                    case 38: // [위쪽] 제한 없이 이동
-                        y -= step;
+                    case 38: // [위쪽] 이동
+                        if (y - step > 90) {
+                            y -= step;
+                        }
                         break;
-                    case 39: // [오른쪽] 제한 없이 이동
-                        x += step;
+                    case 39: // [오른쪽] 이동
+                        if (x + step < 1830) {
+                            x += step;
+                        }
                         break;
-                    case 40: // [아래쪽] 제한 없이 이동
-                        y += step;
+                    case 40: // [아래쪽] 이동
+                        if (y + step < 830) {
+                            y += step;
+                        }
                         break;
                 }
 
                 // 변경된 좌표를 실제 DOM 요소에 적용
                 robot.style.left = x + "px";
                 robot.style.top = y + "px";
+
+                // 색상 업데이트
+                updateRobotColor(robot);
 
                 // 좌표 정보 출력
                 info.innerHTML = "현재 좌표 (x, y) = (" + x + ", " + y + ")";
