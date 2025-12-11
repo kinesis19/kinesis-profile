@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>실습 1: 스마트 피자 주문서</title>
+    <title>실습 1: 로봇 부품 주문서(원래는 스마트 피자 주문서)</title>
     <style>
         /* 메뉴 박스 테두리 스타일 (fieldset 대체) */
         #menu_box {
@@ -59,7 +59,7 @@
     </script>
 </head>
 <body>
-    <h3>피자 주문서 (이벤트 활용)</h3>
+    <h3>로봇 부품 주문서 (원래는 스마트 피자 주문서)</h3>
     <hr>
     
     <form action="#" onsubmit="return validate(event)">
@@ -68,19 +68,19 @@
             <h4>[메뉴 선택]</h4>
             
             <div>
-                <input type="checkbox" class="menu-check" value="15000" onchange="recalc()"> 콤비네이션 피자 (15,000원)
+                <input type="checkbox" class="menu-check" value="12000" onchange="recalc()"> MCU(STM32F446RET6) (12,000원)
                 <input type="number" class="menu-qty" value="1" min="1" style="width: 40px;" onchange="recalc()" onkeyup="recalc()"> 개
             </div>
             <div>
-                <input type="checkbox" class="menu-check" value="12000" onchange="recalc()"> 페퍼로니 피자 (12,000원)
+                <input type="checkbox" class="menu-check" value="3000" onchange="recalc()"> 타이밍 풀리 (3,000원)
                 <input type="number" class="menu-qty" value="1" min="1" style="width: 40px;" onchange="recalc()" onkeyup="recalc()"> 개
             </div>
             <div>
-                <input type="checkbox" class="menu-check" value="2000" onchange="recalc()"> 치즈 토핑 추가 (2,000원)
+                <input type="checkbox" class="menu-check" value="350000" onchange="recalc()"> LiDAR (350,000원)
                 <input type="number" class="menu-qty" value="1" min="1" style="width: 40px;" onchange="recalc()" onkeyup="recalc()"> 개
             </div>
             <div>
-                <input type="checkbox" class="menu-check" value="1500" onchange="recalc()"> 콜라 1.25L (1,500원)
+                <input type="checkbox" class="menu-check" value="5000" onchange="recalc()"> 볼트&너트 세트 (5,000원)
                 <input type="number" class="menu-qty" value="1" min="1" style="width: 40px;" onchange="recalc()" onkeyup="recalc()"> 개
             </div>
         </div>
