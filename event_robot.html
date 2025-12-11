@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>실습 2: 키보드 자동차</title>
+    <title>실습 2: 키보드 로봇</title>
     <style>
         body {
             height: 100vh;
@@ -11,7 +11,7 @@
             background-color: #FCE38A;
         }
 
-        #car {
+        #robot {
             position: absolute; /* 절대 위치 지정 (필수) */
             left: 100px;        /* 초기 x좌표 */
             top: 100px;         /* 초기 y좌표 */
@@ -33,7 +33,7 @@
         var step = 10; // 이동 거리
 
         window.onload = function() {
-            var car = document.getElementById("car");
+            var robot = document.getElementById("robot");
             var info = document.getElementById("info");
 
             document.onkeydown = function(e) {
@@ -54,8 +54,8 @@
                 }
 
                 // 변경된 좌표를 실제 DOM 요소에 적용
-                car.style.left = x + "px";
-                car.style.top = y + "px";
+                robot.style.left = x + "px";
+                robot.style.top = y + "px";
 
                 // 좌표 정보 출력
                 info.innerHTML = "현재 좌표 (x, y) = (" + x + ", " + y + ")";
@@ -64,9 +64,9 @@
     </script>
 </head>
 <body>
-    <h3>실습 2: 키보드 자동차</h3>
-    <p>방향키(←, ↑, →, ↓)를 눌러 자유롭게 운전해보세요.</p>
-    <div id="car">Car</div>
+    <h3>실습 2: 키보드 로봇(원래는 자동차)</h3>
+    <p>방향키(←, ↑, →, ↓)를 눌러 자유롭게 조종해보세요.</p>
+    <div id="robot">Robot</div>
     <div id="info">현재 좌표 (x, y) = (100, 100)</div>
 </body>
 </html>
